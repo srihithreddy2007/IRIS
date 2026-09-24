@@ -17,7 +17,7 @@ import { AdminDashboardPage } from './pages/AdminDashboardPage';
 // Protected Route Guard
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  if (loading) return <div className="min-h-screen bg-[#0B0D14]" />;
+  if (loading) return <div className="min-h-screen bg-[#F8FAFC]" />;
   if (!user) return <Navigate to="/login" replace />;
   return children;
 };
@@ -25,14 +25,14 @@ const ProtectedRoute = ({ children }) => {
 // Admin Route Guard
 const AdminRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  if (loading) return <div className="min-h-screen bg-[#0B0D14]" />;
+  if (loading) return <div className="min-h-screen bg-[#F8FAFC]" />;
   if (!user || user.role !== 'ADMIN') return <Navigate to="/dashboard" replace />;
   return children;
 };
 
 export const AppContent = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-[#0B0D14] text-[#F7F8FC]">
+    <div className="flex flex-col min-h-screen bg-[#F8FAFC] text-[#0F172A]">
       <Navbar />
       <main className="flex-1">
         <Routes>
