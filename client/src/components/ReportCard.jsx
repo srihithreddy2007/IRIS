@@ -23,6 +23,13 @@ export const ReportCard = ({ report }) => {
           <StatusBadge status={report.status} />
         </div>
 
+        {/* Item Image Thumbnail if available */}
+        {report.imageUrl && (
+          <div className="mb-3 h-40 rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
+            <img src={report.imageUrl} alt={report.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+          </div>
+        )}
+
         {/* Title */}
         <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition line-clamp-1">
           {report.title}
