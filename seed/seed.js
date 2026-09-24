@@ -146,8 +146,8 @@ const seedData = async () => {
         category: 'Clothing',
         location: 'Gymnasium - Locker Room',
         date: new Date('2024-10-10'),
-        status: 'REMOVED',
-        adminNotes: 'Duplicate report - removed by admin',
+        status: 'REJECTED',
+        adminNotes: 'Duplicate report - rejected by admin',
         reportedBy: bob._id,
       },
       {

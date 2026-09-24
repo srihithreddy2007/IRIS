@@ -16,7 +16,6 @@ const sendTokenResponse = (user, statusCode, res) => {
 
   res.status(statusCode).cookie('token', token, cookieOptions).json({
     success: true,
-    token,
     data: {
       id: user._id,
       name: user.name,
@@ -39,7 +38,8 @@ const register = async (req, res, next) => {
       return next(new ApiError(400, 'User with this email already exists'));
     }
 
-    const user = await User.create({ name, email, password });
+    // Always force role to USER for public registration
+    const user = await User.create({ name, email, password, role: 'USER' });
     sendTokenResponse(user, 201, res);
   } catch (error) {
     next(error);
@@ -76,9 +76,10 @@ const login = async (req, res, next) => {
 // @access  Private
 const logout = async (req, res, next) => {
   try {
-    res.cookie('token', 'none', {
-      expires: new Date(Date.now() + 10 * 1000),
+    res.clearCookie('token', {
       httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
     });
 
     res.status(200).json({

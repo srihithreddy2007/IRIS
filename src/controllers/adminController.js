@@ -90,7 +90,7 @@ const updateReportStatus = async (req, res, next) => {
   }
 };
 
-// @desc    Remove inappropriate report (admin)
+// @desc    Remove/reject inappropriate report (admin)
 // @route   DELETE /api/admin/reports/:id
 // @access  Private (ADMIN)
 const removeReport = async (req, res, next) => {
@@ -100,20 +100,20 @@ const removeReport = async (req, res, next) => {
       return next(new ApiError(404, 'Report not found'));
     }
 
-    // Soft delete - mark as REMOVED
+    // Mark as REJECTED
     report = await Report.findByIdAndUpdate(
       req.params.id,
       {
-        status: 'REMOVED',
+        status: 'REJECTED',
         adminNotes:
-          req.body.adminNotes || 'Removed by admin',
+          req.body.adminNotes || 'Rejected by admin',
       },
       { new: true, runValidators: true }
     ).populate('reportedBy', 'name email');
 
     res.status(200).json({
       success: true,
-      message: 'Report removed by admin',
+      message: 'Report rejected by admin',
       data: report,
     });
   } catch (error) {
@@ -126,12 +126,12 @@ const removeReport = async (req, res, next) => {
 // @access  Private (ADMIN)
 const getDashboardStats = async (req, res, next) => {
   try {
-    const [totalReports, activeReports, resolvedReports, removedReports, lostItems, foundItems, totalUsers] =
+    const [totalReports, activeReports, resolvedReports, rejectedReports, lostItems, foundItems, totalUsers] =
       await Promise.all([
         Report.countDocuments(),
         Report.countDocuments({ status: 'ACTIVE' }),
         Report.countDocuments({ status: 'RESOLVED' }),
-        Report.countDocuments({ status: 'REMOVED' }),
+        Report.countDocuments({ status: 'REJECTED' }),
         Report.countDocuments({ type: 'LOST', status: 'ACTIVE' }),
         Report.countDocuments({ type: 'FOUND', status: 'ACTIVE' }),
         User.countDocuments(),
@@ -156,7 +156,7 @@ const getDashboardStats = async (req, res, next) => {
         totalReports,
         activeReports,
         resolvedReports,
-        removedReports,
+        rejectedReports,
         lostItems,
         foundItems,
         totalUsers,

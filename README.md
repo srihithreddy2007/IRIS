@@ -185,8 +185,8 @@ The collection covers:
 2. Reports contain: item name, description, location, date, and status
 3. Users can only modify/delete their **own** active reports
 4. Only administrators can moderate (update status, remove) all reports
-5. Reports have three statuses: `ACTIVE`, `RESOLVED`, `REMOVED`
-6. Admin removal is a soft-delete (status → `REMOVED`)
+5. Reports have three statuses: `ACTIVE`, `RESOLVED`, `REJECTED`
+6. Admin removal/rejection sets status → `REJECTED`
 
 ## Error Handling
 

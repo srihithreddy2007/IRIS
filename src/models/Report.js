@@ -48,7 +48,7 @@ const reportSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ['ACTIVE', 'RESOLVED', 'REMOVED'],
+      enum: ['ACTIVE', 'RESOLVED', 'REJECTED'],
       default: 'ACTIVE',
     },
     imageUrl: {

@@ -37,10 +37,10 @@ const getReports = async (req, res, next) => {
     } = req.query;
 
     // Build query - only show ACTIVE and RESOLVED reports to users
-    const filter = { status: { $ne: 'REMOVED' } };
+    const filter = { status: { $ne: 'REJECTED' } };
 
     if (type) filter.type = type.toUpperCase();
-    if (status && status !== 'REMOVED') filter.status = status.toUpperCase();
+    if (status && status !== 'REJECTED') filter.status = status.toUpperCase();
     if (category) filter.category = category;
 
     // Text search
@@ -95,8 +95,8 @@ const getReport = async (req, res, next) => {
       return next(new ApiError(404, 'Report not found'));
     }
 
-    // Don't show removed reports to regular users
-    if (report.status === 'REMOVED' && req.user.role !== 'ADMIN') {
+    // Don't show rejected reports to regular users
+    if (report.status === 'REJECTED' && req.user.role !== 'ADMIN') {
       return next(new ApiError(404, 'Report not found'));
     }
 

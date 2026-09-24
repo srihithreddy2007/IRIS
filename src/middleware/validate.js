@@ -139,8 +139,8 @@ const validateAdminStatusUpdate = [
   body('status')
     .notEmpty()
     .withMessage('Status is required')
-    .isIn(['ACTIVE', 'RESOLVED', 'REMOVED'])
-    .withMessage('Status must be ACTIVE, RESOLVED, or REMOVED'),
+    .isIn(['ACTIVE', 'RESOLVED', 'REJECTED'])
+    .withMessage('Status must be ACTIVE, RESOLVED, or REJECTED'),
   body('adminNotes')
     .optional()
     .trim()
