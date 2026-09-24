@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
-import { PlusCircle, HelpCircle, CheckCircle2, MapPin, Calendar, Tag, FileText, Image as ImageIcon, Loader2 } from 'lucide-react';
+import { PlusCircle, HelpCircle, CheckCircle2, MapPin, Image as ImageIcon, Loader2 } from 'lucide-react';
 
 const CATEGORIES = ['Electronics', 'Documents', 'Accessories', 'Clothing', 'Books', 'Keys', 'Bags', 'Other'];
 
@@ -63,15 +63,15 @@ export const CreateReportPage = () => {
       
       {/* Header */}
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-extrabold text-[#F7F8FC]">Post a Campus Report</h1>
-        <p className="text-xs text-[#A5AEC2]">Provide detailed information to help identify and return the item.</p>
+        <h1 className="text-3xl font-extrabold text-slate-900">Post a Campus Report</h1>
+        <p className="text-xs text-slate-500">Provide detailed information to help identify and return the item.</p>
       </div>
 
       {/* Form Card */}
-      <div className="glass-card rounded-3xl p-6 sm:p-10 border border-[#20283B] space-y-6">
+      <div className="glass-card rounded-3xl p-6 sm:p-10 border border-slate-200 space-y-6 shadow-xl">
         
         {errorMessage && (
-          <div className="p-3.5 rounded-xl bg-[#FF6B78]/10 border border-[#FF6B78]/30 text-[#FF6B78] text-xs font-medium text-center">
+          <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 text-xs font-medium text-center">
             {errorMessage}
           </div>
         )}
@@ -80,15 +80,15 @@ export const CreateReportPage = () => {
           
           {/* Type Selector (LOST vs FOUND) */}
           <div className="space-y-2">
-            <label className="text-xs font-semibold text-[#A5AEC2]">Report Type</label>
+            <label className="text-xs font-semibold text-slate-600">Report Type</label>
             <div className="grid grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => setType('LOST')}
                 className={`py-3.5 px-4 rounded-2xl border font-bold text-xs flex items-center justify-center gap-2 transition ${
                   type === 'LOST'
-                    ? 'bg-[#7DA9FF]/20 border-[#7DA9FF] text-[#7DA9FF] shadow-glow'
-                    : 'bg-[#141927] border-[#20283B] text-[#A5AEC2] hover:text-white'
+                    ? 'bg-indigo-50 border-indigo-400 text-indigo-700 shadow-sm'
+                    : 'bg-white border-slate-200 text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <HelpCircle className="w-4 h-4" />
@@ -100,8 +100,8 @@ export const CreateReportPage = () => {
                 onClick={() => setType('FOUND')}
                 className={`py-3.5 px-4 rounded-2xl border font-bold text-xs flex items-center justify-center gap-2 transition ${
                   type === 'FOUND'
-                    ? 'bg-[#FF6B78]/20 border-[#FF6B78] text-[#FF6B78] shadow-coral-glow'
-                    : 'bg-[#141927] border-[#20283B] text-[#A5AEC2] hover:text-white'
+                    ? 'bg-rose-50 border-rose-400 text-rose-700 shadow-sm'
+                    : 'bg-white border-slate-200 text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <CheckCircle2 className="w-4 h-4" />
@@ -112,7 +112,7 @@ export const CreateReportPage = () => {
 
           {/* Title / Item Name */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[#A5AEC2]">Item Name / Title *</label>
+            <label className="text-xs font-semibold text-slate-600">Item Name / Title *</label>
             <input
               type="text"
               required
@@ -128,14 +128,14 @@ export const CreateReportPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Category */}
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-[#A5AEC2]">Category</label>
+              <label className="text-xs font-semibold text-slate-600">Category</label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 className="w-full px-3 py-3 rounded-xl glass-input text-sm cursor-pointer"
               >
                 {CATEGORIES.map((cat) => (
-                  <option key={cat} value={cat} className="bg-[#141927] text-white">
+                  <option key={cat} value={cat} className="bg-white text-slate-900">
                     {cat}
                   </option>
                 ))}
@@ -144,7 +144,7 @@ export const CreateReportPage = () => {
 
             {/* Date */}
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-[#A5AEC2]">Date {type === 'LOST' ? 'Lost' : 'Found'} *</label>
+              <label className="text-xs font-semibold text-slate-600">Date {type === 'LOST' ? 'Lost' : 'Found'} *</label>
               <input
                 type="date"
                 required
@@ -157,9 +157,9 @@ export const CreateReportPage = () => {
 
           {/* Location */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[#A5AEC2]">Specific Location *</label>
+            <label className="text-xs font-semibold text-slate-600">Specific Location *</label>
             <div className="relative flex items-center">
-              <MapPin className="absolute left-3.5 w-4 h-4 text-[#A5AEC2]" />
+              <MapPin className="absolute left-3.5 w-4 h-4 text-slate-400" />
               <input
                 type="text"
                 required
@@ -174,7 +174,7 @@ export const CreateReportPage = () => {
 
           {/* Description */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[#A5AEC2]">Detailed Description *</label>
+            <label className="text-xs font-semibold text-slate-600">Detailed Description *</label>
             <textarea
               required
               rows={4}
@@ -188,9 +188,9 @@ export const CreateReportPage = () => {
 
           {/* Optional Image URL */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[#A5AEC2]">Image URL (Optional)</label>
+            <label className="text-xs font-semibold text-slate-600">Image URL (Optional)</label>
             <div className="relative flex items-center">
-              <ImageIcon className="absolute left-3.5 w-4 h-4 text-[#A5AEC2]" />
+              <ImageIcon className="absolute left-3.5 w-4 h-4 text-slate-400" />
               <input
                 type="url"
                 placeholder="https://images.unsplash.com/photo-..."
@@ -205,7 +205,7 @@ export const CreateReportPage = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 rounded-2xl font-bold bg-gradient-to-r from-[#7DA9FF] to-[#6093FF] text-[#0B0D14] shadow-glow hover:scale-[1.01] active:scale-[0.99] transition flex items-center justify-center gap-2 text-sm disabled:opacity-50"
+            className="w-full py-4 rounded-2xl font-bold bg-indigo-600 text-white shadow-soft hover:bg-indigo-700 hover:scale-[1.01] active:scale-[0.99] transition flex items-center justify-center gap-2 text-sm disabled:opacity-50"
           >
             {isSubmitting ? (
               <>

@@ -113,19 +113,19 @@ export const UserDashboardPage = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
       
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#20283B] pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#7DA9FF]/10 text-[#7DA9FF] text-xs font-bold mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold mb-2 border border-indigo-200">
             <Sparkles className="w-3.5 h-3.5" />
             User Dashboard
           </div>
-          <h1 className="text-3xl font-extrabold text-[#F7F8FC]">Welcome back, {user?.name}</h1>
-          <p className="text-xs text-[#A5AEC2] mt-1">Manage your active, resolved, and submitted lost & found reports.</p>
+          <h1 className="text-3xl font-extrabold text-slate-900">Welcome back, {user?.name}</h1>
+          <p className="text-xs text-slate-500 mt-1">Manage your active, resolved, and submitted lost & found reports.</p>
         </div>
 
         <Link
           to="/report"
-          className="px-5 py-3 rounded-2xl font-bold bg-gradient-to-r from-[#7DA9FF] to-[#6093FF] text-[#0B0D14] shadow-glow hover:scale-[1.02] transition flex items-center justify-center gap-2 text-xs"
+          className="px-5 py-3 rounded-2xl font-bold bg-indigo-600 text-white shadow-soft hover:bg-indigo-700 transition flex items-center justify-center gap-2 text-xs"
         >
           <PlusCircle className="w-4 h-4" />
           Create New Report
@@ -135,32 +135,32 @@ export const UserDashboardPage = () => {
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         
-        <div className="glass-card rounded-2xl p-6 border border-[#20283B] flex items-center justify-between">
+        <div className="glass-card rounded-2xl p-6 border border-slate-200 flex items-center justify-between shadow-sm">
           <div>
-            <p className="text-xs font-semibold text-[#A5AEC2] uppercase">Active Reports</p>
-            <p className="text-3xl font-extrabold text-emerald-400 mt-1">{activeCount}</p>
+            <p className="text-xs font-semibold text-slate-500 uppercase">Active Reports</p>
+            <p className="text-3xl font-extrabold text-emerald-600 mt-1">{activeCount}</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
+          <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
             ⚡
           </div>
         </div>
 
-        <div className="glass-card rounded-2xl p-6 border border-[#20283B] flex items-center justify-between">
+        <div className="glass-card rounded-2xl p-6 border border-slate-200 flex items-center justify-between shadow-sm">
           <div>
-            <p className="text-xs font-semibold text-[#A5AEC2] uppercase">Resolved Items</p>
-            <p className="text-3xl font-extrabold text-[#7DA9FF] mt-1">{resolvedCount}</p>
+            <p className="text-xs font-semibold text-slate-500 uppercase">Resolved Items</p>
+            <p className="text-3xl font-extrabold text-indigo-600 mt-1">{resolvedCount}</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-[#7DA9FF]/10 text-[#7DA9FF] flex items-center justify-center font-bold">
+          <div className="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">
             ✓
           </div>
         </div>
 
-        <div className="glass-card rounded-2xl p-6 border border-[#20283B] flex items-center justify-between">
+        <div className="glass-card rounded-2xl p-6 border border-slate-200 flex items-center justify-between shadow-sm">
           <div>
-            <p className="text-xs font-semibold text-[#A5AEC2] uppercase">Rejected / Removed</p>
-            <p className="text-3xl font-extrabold text-[#FF6B78] mt-1">{rejectedCount}</p>
+            <p className="text-xs font-semibold text-slate-500 uppercase">Rejected / Removed</p>
+            <p className="text-3xl font-extrabold text-rose-600 mt-1">{rejectedCount}</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-[#FF6B78]/10 text-[#FF6B78] flex items-center justify-center font-bold">
+          <div className="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center font-bold">
             ✕
           </div>
         </div>
@@ -169,12 +169,12 @@ export const UserDashboardPage = () => {
 
       {/* My Reports Table / Cards List */}
       <div className="space-y-4">
-        <h2 className="text-xl font-bold text-white">My Submitted Reports ({reports.length})</h2>
+        <h2 className="text-xl font-bold text-slate-900">My Submitted Reports ({reports.length})</h2>
 
         {loading ? (
           <div className="space-y-4">
             {[1, 2, 3].map((n) => (
-              <div key={n} className="h-24 rounded-2xl bg-[#141927] animate-pulse" />
+              <div key={n} className="h-24 rounded-2xl bg-slate-200 animate-pulse" />
             ))}
           </div>
         ) : reports.length > 0 ? (
@@ -182,30 +182,30 @@ export const UserDashboardPage = () => {
             {reports.map((report) => (
               <div
                 key={report._id}
-                className="glass-card rounded-2xl p-5 border border-[#20283B] flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#7DA9FF]/30 transition"
+                className="glass-card rounded-2xl p-5 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-indigo-300 transition shadow-sm"
               >
                 <div className="space-y-2 max-w-xl">
                   <div className="flex items-center gap-2">
                     <TypeBadge type={report.type} />
                     <StatusBadge status={report.status} />
                     {report.category && (
-                      <span className="text-xs text-[#A5AEC2] bg-[#20283B] px-2 py-0.5 rounded">
+                      <span className="text-xs text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
                         {report.category}
                       </span>
                     )}
                   </div>
-                  <h3 className="text-base font-bold text-white">{report.title}</h3>
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-[#A5AEC2]">
-                    <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5 text-[#7DA9FF]" /> {report.location}</span>
-                    <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5 text-[#FF6B78]" /> {formatDate(report.date)}</span>
+                  <h3 className="text-base font-bold text-slate-900">{report.title}</h3>
+                  <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
+                    <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5 text-indigo-500" /> {report.location}</span>
+                    <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5 text-rose-500" /> {formatDate(report.date)}</span>
                   </div>
                 </div>
 
                 {/* Inline Action Controls */}
-                <div className="flex flex-wrap items-center gap-2 pt-2 md:pt-0 border-t md:border-t-0 border-[#20283B]">
+                <div className="flex flex-wrap items-center gap-2 pt-2 md:pt-0 border-t md:border-t-0 border-slate-100">
                   <Link
                     to={`/reports/${report._id}`}
-                    className="p-2.5 rounded-xl bg-[#20283B] text-white hover:text-[#7DA9FF] text-xs font-bold flex items-center gap-1"
+                    className="p-2.5 rounded-xl bg-slate-100 text-slate-700 hover:text-indigo-600 text-xs font-bold flex items-center gap-1"
                     title="View Details"
                   >
                     <Eye className="w-4 h-4" />
@@ -216,7 +216,7 @@ export const UserDashboardPage = () => {
                     <>
                       <button
                         onClick={() => handleOpenEdit(report)}
-                        className="p-2.5 rounded-xl bg-[#7DA9FF]/10 text-[#7DA9FF] border border-[#7DA9FF]/30 hover:bg-[#7DA9FF]/20 text-xs font-bold flex items-center gap-1"
+                        className="p-2.5 rounded-xl bg-indigo-50 text-indigo-600 border border-indigo-200 hover:bg-indigo-100 text-xs font-bold flex items-center gap-1"
                       >
                         <Edit3 className="w-4 h-4" />
                         Edit
@@ -224,7 +224,7 @@ export const UserDashboardPage = () => {
 
                       <button
                         onClick={() => setConfirmResolveId(report._id)}
-                        className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20 text-xs font-bold flex items-center gap-1"
+                        className="p-2.5 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 text-xs font-bold flex items-center gap-1"
                       >
                         <CheckCircle2 className="w-4 h-4" />
                         Resolve
@@ -232,7 +232,7 @@ export const UserDashboardPage = () => {
 
                       <button
                         onClick={() => setConfirmDeleteId(report._id)}
-                        className="p-2.5 rounded-xl bg-[#FF6B78]/10 text-[#FF6B78] border border-[#FF6B78]/30 hover:bg-[#FF6B78]/20 text-xs font-bold flex items-center gap-1"
+                        className="p-2.5 rounded-xl bg-rose-50 text-rose-600 border border-rose-200 hover:bg-rose-100 text-xs font-bold flex items-center gap-1"
                       >
                         <Trash2 className="w-4 h-4" />
                         Delete
@@ -244,10 +244,10 @@ export const UserDashboardPage = () => {
             ))}
           </div>
         ) : (
-          <div className="glass-card rounded-3xl p-12 text-center text-[#A5AEC2] space-y-3">
-            <p className="font-bold text-white">No reports submitted yet</p>
+          <div className="glass-card rounded-3xl p-12 text-center text-slate-500 space-y-3">
+            <p className="font-bold text-slate-900">No reports submitted yet</p>
             <p className="text-xs">Have you lost or found something on campus?</p>
-            <Link to="/report" className="inline-block px-5 py-2.5 rounded-xl bg-[#7DA9FF] text-[#0B0D14] text-xs font-bold">
+            <Link to="/report" className="inline-block px-5 py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-bold">
               Submit Your First Report
             </Link>
           </div>
@@ -258,7 +258,7 @@ export const UserDashboardPage = () => {
       <Modal isOpen={!!editingReport} onClose={() => setEditingReport(null)} title="Edit Active Report">
         <form onSubmit={handleSaveEdit} className="space-y-4">
           <div>
-            <label className="text-xs font-semibold text-[#A5AEC2]">Item Title</label>
+            <label className="text-xs font-semibold text-slate-600">Item Title</label>
             <input
               type="text"
               required
@@ -269,7 +269,7 @@ export const UserDashboardPage = () => {
           </div>
 
           <div>
-            <label className="text-xs font-semibold text-[#A5AEC2]">Location</label>
+            <label className="text-xs font-semibold text-slate-600">Location</label>
             <input
               type="text"
               required
@@ -280,7 +280,7 @@ export const UserDashboardPage = () => {
           </div>
 
           <div>
-            <label className="text-xs font-semibold text-[#A5AEC2]">Description</label>
+            <label className="text-xs font-semibold text-slate-600">Description</label>
             <textarea
               required
               rows={3}
@@ -294,14 +294,14 @@ export const UserDashboardPage = () => {
             <button
               type="button"
               onClick={() => setEditingReport(null)}
-              className="px-4 py-2 rounded-xl bg-[#20283B] text-white text-xs font-bold"
+              className="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={actionLoading}
-              className="px-5 py-2 rounded-xl bg-[#7DA9FF] text-[#0B0D14] text-xs font-bold flex items-center gap-1"
+              className="px-5 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold flex items-center gap-1"
             >
               {actionLoading && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
               Save Changes
@@ -312,22 +312,22 @@ export const UserDashboardPage = () => {
 
       {/* RESOLVE CONFIRMATION MODAL */}
       <Modal isOpen={!!confirmResolveId} onClose={() => setConfirmResolveId(null)} title="Resolve Report">
-        <div className="space-y-4 text-sm text-[#A5AEC2]">
-          <p>Mark this report as <strong className="text-emerald-400">RESOLVED</strong>? This confirms the item has been recovered or returned.</p>
+        <div className="space-y-4 text-sm text-slate-600">
+          <p>Mark this report as <strong className="text-emerald-600">RESOLVED</strong>? This confirms the item has been recovered or returned.</p>
           <div className="flex justify-end gap-3 pt-2">
-            <button onClick={() => setConfirmResolveId(null)} className="px-4 py-2 rounded-xl bg-[#20283B] text-white text-xs font-bold">Cancel</button>
-            <button onClick={() => handleResolve(confirmResolveId)} disabled={actionLoading} className="px-5 py-2 rounded-xl bg-emerald-500 text-black text-xs font-bold">Confirm Resolve</button>
+            <button onClick={() => setConfirmResolveId(null)} className="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold">Cancel</button>
+            <button onClick={() => handleResolve(confirmResolveId)} disabled={actionLoading} className="px-5 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold">Confirm Resolve</button>
           </div>
         </div>
       </Modal>
 
       {/* DELETE CONFIRMATION MODAL */}
       <Modal isOpen={!!confirmDeleteId} onClose={() => setConfirmDeleteId(null)} title="Delete Report">
-        <div className="space-y-4 text-sm text-[#A5AEC2]">
+        <div className="space-y-4 text-sm text-slate-600">
           <p>Are you sure you want to delete this report? This action cannot be undone.</p>
           <div className="flex justify-end gap-3 pt-2">
-            <button onClick={() => setConfirmDeleteId(null)} className="px-4 py-2 rounded-xl bg-[#20283B] text-white text-xs font-bold">Cancel</button>
-            <button onClick={() => handleDelete(confirmDeleteId)} disabled={actionLoading} className="px-5 py-2 rounded-xl bg-[#FF6B78] text-white text-xs font-bold">Confirm Delete</button>
+            <button onClick={() => setConfirmDeleteId(null)} className="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold">Cancel</button>
+            <button onClick={() => handleDelete(confirmDeleteId)} disabled={actionLoading} className="px-5 py-2 rounded-xl bg-rose-600 text-white text-xs font-bold">Confirm Delete</button>
           </div>
         </div>
       </Modal>

@@ -33,49 +33,59 @@ export const Hero3D = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     currentMount.appendChild(renderer.domElement);
 
-    // 3. Lighting (Cerbo Blue & Coral accents)
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    // 3. Lighting (Soft Studio & Pastel Accents)
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
     scene.add(ambientLight);
 
-    const blueLight = new THREE.PointLight(0x7DA9FF, 4, 30);
+    const mainLight = new THREE.DirectionalLight(0xffffff, 1.5);
+    mainLight.position.set(5, 10, 7);
+    scene.add(mainLight);
+
+    const blueLight = new THREE.PointLight(0x818CF8, 3, 30); // Soft Lavender Indigo
     blueLight.position.set(-6, 6, 6);
     scene.add(blueLight);
 
-    const coralLight = new THREE.PointLight(0xFF6B78, 4, 30);
-    coralLight.position.set(6, -6, 6);
-    scene.add(coralLight);
+    const pinkLight = new THREE.PointLight(0xFB7185, 3, 30); // Soft Pastel Coral
+    pinkLight.position.set(6, -6, 6);
+    scene.add(pinkLight);
 
     // 4. Create Floating 3D Belongings Meshes
     const itemsGroup = new THREE.Group();
 
-    // Material presets
+    // Vibrant Pastel Material Presets
     const blueMat = new THREE.MeshStandardMaterial({
-      color: 0x7DA9FF,
+      color: 0x6366F1, // Pastel Electric Indigo
       roughness: 0.2,
-      metalness: 0.5,
+      metalness: 0.3,
     });
 
-    const coralMat = new THREE.MeshStandardMaterial({
-      color: 0xFF6B78,
+    const pinkMat = new THREE.MeshStandardMaterial({
+      color: 0xF43F5E, // Pastel Rose/Coral
       roughness: 0.2,
+      metalness: 0.3,
+    });
+
+    const lavenderMat = new THREE.MeshStandardMaterial({
+      color: 0xA855F7, // Soft Purple/Lavender
+      roughness: 0.3,
       metalness: 0.4,
     });
 
-    const darkMat = new THREE.MeshStandardMaterial({
-      color: 0x20283B,
-      roughness: 0.4,
+    const goldMat = new THREE.MeshStandardMaterial({
+      color: 0xF59E0B, // Pastel Amber Gold
+      roughness: 0.1,
       metalness: 0.8,
     });
 
-    const goldMat = new THREE.MeshStandardMaterial({
-      color: 0xF59E0B,
+    const whiteMat = new THREE.MeshStandardMaterial({
+      color: 0xF8FAFC, // Crisp Soft White
       roughness: 0.1,
-      metalness: 0.9,
+      metalness: 0.2,
     });
 
     // Object 1: Wallet / Cardholder (Rounded Box)
     const walletGeo = new THREE.BoxGeometry(2.4, 1.6, 0.4);
-    const wallet = new THREE.Mesh(walletGeo, coralMat);
+    const wallet = new THREE.Mesh(walletGeo, pinkMat);
     wallet.position.set(-3.5, 2, 0);
     itemsGroup.add(wallet);
 
@@ -96,10 +106,10 @@ export const Hero3D = () => {
     const bandGeo = new THREE.TorusGeometry(1.6, 0.12, 16, 32, Math.PI);
     const headBand = new THREE.Mesh(bandGeo, blueMat);
     const cupGeo = new THREE.CylinderGeometry(0.5, 0.5, 0.4, 32);
-    const cupLeft = new THREE.Mesh(cupGeo, darkMat);
+    const cupLeft = new THREE.Mesh(cupGeo, whiteMat);
     cupLeft.position.set(-1.6, 0, 0);
     cupLeft.rotation.z = Math.PI / 2;
-    const cupRight = new THREE.Mesh(cupGeo, darkMat);
+    const cupRight = new THREE.Mesh(cupGeo, whiteMat);
     cupRight.position.set(1.6, 0, 0);
     cupRight.rotation.z = Math.PI / 2;
     const headphoneGroup = new THREE.Group();
@@ -114,7 +124,7 @@ export const Hero3D = () => {
     const bottleGeo = new THREE.CylinderGeometry(0.7, 0.7, 2.6, 32);
     const bottle = new THREE.Mesh(bottleGeo, blueMat);
     const capGeo = new THREE.CylinderGeometry(0.4, 0.4, 0.5, 32);
-    const cap = new THREE.Mesh(capGeo, darkMat);
+    const cap = new THREE.Mesh(capGeo, lavenderMat);
     cap.position.y = 1.55;
     const bottleGroup = new THREE.Group();
     bottleGroup.add(bottle);
@@ -125,14 +135,14 @@ export const Hero3D = () => {
 
     // Object 5: ID Card Badge (Thin Box)
     const badgeGeo = new THREE.BoxGeometry(1.5, 2.2, 0.08);
-    const badge = new THREE.Mesh(badgeGeo, coralMat);
+    const badge = new THREE.Mesh(badgeGeo, pinkMat);
     badge.position.set(3.5, -2.2, 0);
     badge.rotation.z = 0.3;
     itemsGroup.add(badge);
 
     // Object 6: Backpack / Bag (Dodecahedron stylized)
     const bagGeo = new THREE.DodecahedronGeometry(1.4, 1);
-    const bag = new THREE.Mesh(bagGeo, darkMat);
+    const bag = new THREE.Mesh(bagGeo, lavenderMat);
     bag.position.set(0.5, -3.2, -1);
     itemsGroup.add(bag);
 
@@ -220,10 +230,10 @@ export const Hero3D = () => {
   if (!hasWebGL) {
     return (
       <div className="w-full h-full flex items-center justify-center p-8">
-        <div className="relative w-72 h-72 rounded-3xl bg-gradient-to-tr from-[#7DA9FF]/20 to-[#FF6B78]/20 border border-[#20283B] flex items-center justify-center animate-pulse">
+        <div className="relative w-72 h-72 rounded-3xl bg-gradient-to-tr from-indigo-100 to-rose-100 border border-slate-200 flex items-center justify-center animate-pulse">
           <div className="text-center">
             <span className="text-5xl">🎒 🔑 🎧</span>
-            <p className="mt-4 text-xs text-[#A5AEC2]">Interactive Belongings Canvas</p>
+            <p className="mt-4 text-xs text-slate-500">Interactive Belongings Canvas</p>
           </div>
         </div>
       </div>

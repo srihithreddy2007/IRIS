@@ -8,32 +8,41 @@ export default {
     extend: {
       colors: {
         bg: {
-          dark: '#0B0D14',
-          card: '#141927',
-          secondary: '#20283B',
+          light: '#F8FAFC',
+          card: '#FFFFFF',
+          secondary: '#F1F5F9',
+        },
+        pastel: {
+          blue: '#E0E7FF', // Soft Indigo / Light Blue
+          lavender: '#F3E8FF', // Soft Purple
+          pink: '#FFE4E6', // Soft Coral Pink
+          mint: '#D1FAE5', // Soft Mint Green
+          yellow: '#FEF3C7', // Soft Gold/Yellow
         },
         electric: {
-          DEFAULT: '#7DA9FF',
-          hover: '#6093FF',
+          DEFAULT: '#4F46E5', // Indigo Electric
+          hover: '#4338CA',
+          light: '#818CF8',
         },
         coral: {
-          DEFAULT: '#FF6B78',
-          hover: '#FF5262',
+          DEFAULT: '#F43F5E', // Coral Pink
+          hover: '#E11D48',
+          light: '#FB7185',
         },
-        primary: '#F7F8FC',
-        secondary: '#A5AEC2',
+        primary: '#0F172A', // Slate 900
+        secondary: '#64748B', // Slate 500
       },
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
       },
       boxShadow: {
-        glow: '0 0 25px -5px rgba(125, 169, 255, 0.25)',
-        'coral-glow': '0 0 25px -5px rgba(255, 107, 120, 0.25)',
+        soft: '0 10px 30px -10px rgba(79, 70, 229, 0.08)',
+        card: '0 4px 20px -2px rgba(15, 23, 42, 0.06)',
+        'pastel-glow': '0 0 30px 0px rgba(129, 140, 248, 0.25)',
       },
       animation: {
         'float-slow': 'float 6s ease-in-out infinite',
         'float-medium': 'float 4s ease-in-out infinite',
-        'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         float: {

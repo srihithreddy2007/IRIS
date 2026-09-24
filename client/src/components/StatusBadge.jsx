@@ -4,13 +4,13 @@ export const StatusBadge = ({ status }) => {
   const getStyle = () => {
     switch (status) {
       case 'ACTIVE':
-        return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30';
+        return 'bg-emerald-50 text-emerald-700 border-emerald-200';
       case 'RESOLVED':
-        return 'bg-[#7DA9FF]/10 text-[#7DA9FF] border-[#7DA9FF]/30';
+        return 'bg-indigo-50 text-indigo-700 border-indigo-200';
       case 'REJECTED':
-        return 'bg-[#FF6B78]/10 text-[#FF6B78] border-[#FF6B78]/30';
+        return 'bg-rose-50 text-rose-700 border-rose-200';
       default:
-        return 'bg-gray-500/10 text-gray-400 border-gray-500/30';
+        return 'bg-slate-100 text-slate-700 border-slate-200';
     }
   };
 

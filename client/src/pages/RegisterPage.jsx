@@ -46,21 +46,21 @@ export const RegisterPage = () => {
 
   return (
     <div className="min-h-[85vh] flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md space-y-8 glass-card rounded-3xl p-8 sm:p-10 border border-[#20283B] shadow-2xl relative overflow-hidden">
+      <div className="w-full max-w-md space-y-8 glass-card rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-xl relative overflow-hidden">
         
-        <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#FF6B78]/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-20 -right-20 w-40 h-40 bg-rose-200/50 rounded-full blur-3xl pointer-events-none" />
 
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B78]/10 text-[#FF6B78] text-xs font-bold border border-[#FF6B78]/30">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-50 text-rose-600 text-xs font-bold border border-rose-200">
             <Sparkles className="w-3.5 h-3.5" />
             Join Campus Network
           </div>
-          <h2 className="text-2xl font-extrabold text-[#F7F8FC]">Create Your IRIS Account</h2>
-          <p className="text-xs text-[#A5AEC2]">Register to post lost or found items across campus.</p>
+          <h2 className="text-2xl font-extrabold text-slate-900">Create Your IRIS Account</h2>
+          <p className="text-xs text-slate-500">Register to post lost or found items across campus.</p>
         </div>
 
         {errorMessage && (
-          <div className="p-3 rounded-xl bg-[#FF6B78]/10 border border-[#FF6B78]/30 text-[#FF6B78] text-xs font-medium text-center">
+          <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 text-xs font-medium text-center">
             {errorMessage}
           </div>
         )}
@@ -68,9 +68,9 @@ export const RegisterPage = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Full Name */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[#A5AEC2]">Full Name</label>
+            <label className="text-xs font-semibold text-slate-600">Full Name</label>
             <div className="relative flex items-center">
-              <UserIcon className="absolute left-3.5 w-4 h-4 text-[#A5AEC2]" />
+              <UserIcon className="absolute left-3.5 w-4 h-4 text-slate-400" />
               <input
                 type="text"
                 required
@@ -84,9 +84,9 @@ export const RegisterPage = () => {
 
           {/* Email */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[#A5AEC2]">Campus Email</label>
+            <label className="text-xs font-semibold text-slate-600">Campus Email</label>
             <div className="relative flex items-center">
-              <Mail className="absolute left-3.5 w-4 h-4 text-[#A5AEC2]" />
+              <Mail className="absolute left-3.5 w-4 h-4 text-slate-400" />
               <input
                 type="email"
                 required
@@ -100,9 +100,9 @@ export const RegisterPage = () => {
 
           {/* Password */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[#A5AEC2]">Password (min 6 chars)</label>
+            <label className="text-xs font-semibold text-slate-600">Password (min 6 chars)</label>
             <div className="relative flex items-center">
-              <Lock className="absolute left-3.5 w-4 h-4 text-[#A5AEC2]" />
+              <Lock className="absolute left-3.5 w-4 h-4 text-slate-400" />
               <input
                 type="password"
                 required
@@ -116,9 +116,9 @@ export const RegisterPage = () => {
 
           {/* Confirm Password */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[#A5AEC2]">Confirm Password</label>
+            <label className="text-xs font-semibold text-slate-600">Confirm Password</label>
             <div className="relative flex items-center">
-              <Lock className="absolute left-3.5 w-4 h-4 text-[#A5AEC2]" />
+              <Lock className="absolute left-3.5 w-4 h-4 text-slate-400" />
               <input
                 type="password"
                 required
@@ -134,7 +134,7 @@ export const RegisterPage = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3.5 rounded-xl font-bold bg-gradient-to-r from-[#7DA9FF] to-[#6093FF] text-[#0B0D14] shadow-glow hover:scale-[1.01] active:scale-[0.99] transition flex items-center justify-center gap-2 text-sm disabled:opacity-50"
+            className="w-full py-3.5 rounded-xl font-bold bg-indigo-600 text-white shadow-soft hover:bg-indigo-700 hover:scale-[1.01] active:scale-[0.99] transition flex items-center justify-center gap-2 text-sm disabled:opacity-50"
           >
             {isSubmitting ? (
               <>
@@ -150,9 +150,9 @@ export const RegisterPage = () => {
           </button>
         </form>
 
-        <div className="pt-4 border-t border-[#20283B] text-center text-xs text-[#A5AEC2]">
+        <div className="pt-4 border-t border-slate-100 text-center text-xs text-slate-500">
           Already have an account?{' '}
-          <Link to="/login" className="font-bold text-[#7DA9FF] hover:underline">
+          <Link to="/login" className="font-bold text-indigo-600 hover:underline">
             Log In here
           </Link>
         </div>

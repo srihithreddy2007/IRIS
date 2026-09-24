@@ -7,8 +7,8 @@ export const TypeBadge = ({ type }) => {
     <span
       className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold border ${
         isLost
-          ? 'bg-[#7DA9FF]/15 text-[#7DA9FF] border-[#7DA9FF]/40'
-          : 'bg-[#FF6B78]/15 text-[#FF6B78] border-[#FF6B78]/40'
+          ? 'bg-indigo-50 text-indigo-700 border-indigo-200'
+          : 'bg-rose-50 text-rose-700 border-rose-200'
       }`}
     >
       {isLost ? <HelpCircle className="w-3.5 h-3.5" /> : <CheckCircle2 className="w-3.5 h-3.5" />}

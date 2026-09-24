@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { ReportCard } from '../components/ReportCard';
-import { Search, Filter, RotateCcw, ChevronLeft, ChevronRight, SlidersHorizontal } from 'lucide-react';
+import { Search, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const CATEGORIES = ['All', 'Electronics', 'Documents', 'Accessories', 'Clothing', 'Books', 'Keys', 'Bags', 'Other'];
 
@@ -70,22 +70,22 @@ export const BrowsePage = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       
       {/* Page Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#20283B] pb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-6">
         <div>
-          <h1 className="text-3xl font-extrabold text-[#F7F8FC]">Browse Campus Reports</h1>
-          <p className="text-sm text-[#A5AEC2] mt-1">Search lost and found items posted by students and staff.</p>
+          <h1 className="text-3xl font-extrabold text-slate-900">Browse Campus Reports</h1>
+          <p className="text-sm text-slate-500 mt-1">Search lost and found items posted by students and staff.</p>
         </div>
 
         {/* Type Toggle Tabs */}
-        <div className="inline-flex p-1 rounded-2xl bg-[#141927] border border-[#20283B]">
+        <div className="inline-flex p-1 rounded-2xl bg-white border border-slate-200 shadow-sm">
           {['ALL', 'LOST', 'FOUND'].map((t) => (
             <button
               key={t}
               onClick={() => { setType(t); setPage(1); }}
               className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all ${
                 type === t
-                  ? 'bg-[#7DA9FF] text-[#0B0D14] shadow-md'
-                  : 'text-[#A5AEC2] hover:text-white'
+                  ? 'bg-indigo-600 text-white shadow-md'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               {t}
@@ -95,12 +95,12 @@ export const BrowsePage = () => {
       </div>
 
       {/* Search & Filter Toolbar */}
-      <div className="glass-card rounded-2xl p-4 sm:p-6 space-y-4 border border-[#20283B]">
+      <div className="glass-card rounded-2xl p-4 sm:p-6 space-y-4 border border-slate-200 shadow-sm">
         <form onSubmit={handleSearchSubmit} className="grid grid-cols-1 md:grid-cols-12 gap-4">
           
           {/* Search Input */}
           <div className="md:col-span-5 relative flex items-center">
-            <Search className="absolute left-3.5 w-4 h-4 text-[#A5AEC2]" />
+            <Search className="absolute left-3.5 w-4 h-4 text-slate-400" />
             <input
               type="text"
               placeholder="Search title, description, location..."
@@ -118,7 +118,7 @@ export const BrowsePage = () => {
               className="w-full py-2.5 px-3 rounded-xl glass-input text-sm cursor-pointer"
             >
               {CATEGORIES.map((cat) => (
-                <option key={cat} value={cat} className="bg-[#141927] text-white">
+                <option key={cat} value={cat} className="bg-white text-slate-900">
                   Category: {cat}
                 </option>
               ))}
@@ -132,9 +132,9 @@ export const BrowsePage = () => {
               onChange={(e) => { setStatus(e.target.value); setPage(1); }}
               className="w-full py-2.5 px-3 rounded-xl glass-input text-sm cursor-pointer"
             >
-              <option value="ALL" className="bg-[#141927] text-white">Status: All</option>
-              <option value="ACTIVE" className="bg-[#141927] text-white">ACTIVE</option>
-              <option value="RESOLVED" className="bg-[#141927] text-white">RESOLVED</option>
+              <option value="ALL" className="bg-white text-slate-900">Status: All</option>
+              <option value="ACTIVE" className="bg-white text-slate-900">ACTIVE</option>
+              <option value="RESOLVED" className="bg-white text-slate-900">RESOLVED</option>
             </select>
           </div>
 
@@ -142,14 +142,14 @@ export const BrowsePage = () => {
           <div className="md:col-span-2 flex items-center gap-2">
             <button
               type="submit"
-              className="flex-1 py-2.5 rounded-xl bg-[#7DA9FF] text-[#0B0D14] font-bold text-xs hover:bg-[#6093FF] transition"
+              className="flex-1 py-2.5 rounded-xl bg-indigo-600 text-white font-bold text-xs hover:bg-indigo-700 transition shadow-sm"
             >
               Apply
             </button>
             <button
               type="button"
               onClick={handleResetFilters}
-              className="p-2.5 rounded-xl bg-[#20283B] text-[#A5AEC2] hover:text-white transition"
+              className="p-2.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900 transition"
               title="Reset Filters"
             >
               <RotateCcw className="w-4 h-4" />
@@ -160,24 +160,24 @@ export const BrowsePage = () => {
       </div>
 
       {/* Reports Results Summary */}
-      <div className="flex items-center justify-between text-xs text-[#A5AEC2]">
-        <span>Showing <strong className="text-white">{reports.length}</strong> of <strong className="text-white">{totalCount}</strong> reports</span>
-        {type !== 'ALL' && <span className="font-semibold text-[#7DA9FF]">Filtered by {type}</span>}
+      <div className="flex items-center justify-between text-xs text-slate-500">
+        <span>Showing <strong className="text-slate-900">{reports.length}</strong> of <strong className="text-slate-900">{totalCount}</strong> reports</span>
+        {type !== 'ALL' && <span className="font-semibold text-indigo-600">Filtered by {type}</span>}
       </div>
 
       {/* Grid of Report Cards */}
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[1, 2, 3, 4, 5, 6].map((n) => (
-            <div key={n} className="h-64 rounded-2xl bg-[#141927] animate-pulse border border-[#20283B]" />
+            <div key={n} className="h-64 rounded-2xl bg-slate-200 animate-pulse border border-slate-200" />
           ))}
         </div>
       ) : error ? (
-        <div className="glass-card rounded-2xl p-12 text-center text-[#FF6B78] space-y-3">
+        <div className="glass-card rounded-2xl p-12 text-center text-rose-600 space-y-3">
           <p className="font-bold">{error}</p>
           <button
             onClick={fetchReports}
-            className="px-4 py-2 rounded-xl bg-[#20283B] text-white text-xs font-bold"
+            className="px-4 py-2 rounded-xl bg-slate-100 text-slate-900 text-xs font-bold"
           >
             Retry Loading
           </button>
@@ -190,14 +190,14 @@ export const BrowsePage = () => {
         </div>
       ) : (
         <div className="glass-card rounded-3xl p-16 text-center space-y-4 max-w-md mx-auto">
-          <div className="w-16 h-16 rounded-full bg-[#20283B] text-[#A5AEC2] flex items-center justify-center mx-auto text-2xl">
+          <div className="w-16 h-16 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto text-2xl">
             🔍
           </div>
-          <h3 className="text-lg font-bold text-white">No matching reports found</h3>
-          <p className="text-xs text-[#A5AEC2]">Try adjusting your search keywords, category filters, or status selection.</p>
+          <h3 className="text-lg font-bold text-slate-900">No matching reports found</h3>
+          <p className="text-xs text-slate-500">Try adjusting your search keywords, category filters, or status selection.</p>
           <button
             onClick={handleResetFilters}
-            className="px-5 py-2.5 rounded-xl bg-[#7DA9FF] text-[#0B0D14] text-xs font-bold"
+            className="px-5 py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-bold"
           >
             Clear All Filters
           </button>
@@ -210,19 +210,19 @@ export const BrowsePage = () => {
           <button
             disabled={page <= 1}
             onClick={() => setPage(page - 1)}
-            className="p-2.5 rounded-xl glass-card border border-[#20283B] text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#20283B] transition"
+            className="p-2.5 rounded-xl glass-card border border-slate-200 text-slate-900 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-slate-100 transition"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
 
-          <span className="text-xs font-semibold text-[#A5AEC2]">
-            Page <strong className="text-white">{page}</strong> of <strong className="text-white">{totalPages}</strong>
+          <span className="text-xs font-semibold text-slate-500">
+            Page <strong className="text-slate-900">{page}</strong> of <strong className="text-slate-900">{totalPages}</strong>
           </span>
 
           <button
             disabled={page >= totalPages}
             onClick={() => setPage(page + 1)}
-            className="p-2.5 rounded-xl glass-card border border-[#20283B] text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#20283B] transition"
+            className="p-2.5 rounded-xl glass-card border border-slate-200 text-slate-900 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-slate-100 transition"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
